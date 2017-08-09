@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^dashboard/products/(?P<pk>\d+)/update$', views.ProductUpdate.as_view(), name='dashboard_product_update'),
     url(r'^(?P<pk>\d+)/addtocart$', views.ProductAddToCart.as_view(), name='product_addtocart'),
     url(r'^cart/$', views.CartDetailFromRequest.as_view(), name='cart_detail'),
+    url(r'^cart/checkout$', views.OrderCreateCartCheckout.as_view(), name='cart_checkout'),
 
     url(r'^dashboard/users/$', views.UserList.as_view(), name='dashboard_user_list'),
     url(r'^dashboard/users/(?P<pk>\d+)/addtostaff$', views.UserAddToStaff.as_view(), name='dashboard_user_addtostaff'),

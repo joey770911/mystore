@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['localhost', 'mystore0804.herokuapp.com']
 INSTALLED_APPS = [
     'estore',
     'bootstrap3',
+    'fontawesome',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

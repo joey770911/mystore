@@ -14,7 +14,8 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/addtocart$', views.ProductAddToCart.as_view(), name='product_addtocart'),
     url(r'^cart/$', views.CartDetailFromRequest.as_view(), name='cart_detail'),
     url(r'^cart/checkout$', views.OrderCreateCartCheckout.as_view(), name='cart_checkout'),
-
+    url(r'^cart/clear$', views.CartDelete.as_view(), name='cart_delete'),
+    
     url(r'^dashboard/users/$', views.UserList.as_view(), name='dashboard_user_list'),
     url(r'^dashboard/users/(?P<pk>\d+)/addtostaff$', views.UserAddToStaff.as_view(), name='dashboard_user_addtostaff'),
     url(r'^dashboard/users/(?P<pk>\d+)/removefromstaff$', views.UserRemoveFromStaff.as_view(), name='dashboard_user_removefromstaff'),

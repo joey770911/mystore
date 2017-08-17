@@ -14,9 +14,19 @@ from .forms import OrderInfoForm
 from .models import Order,Product
 
 # Create your views here.
-class CartDetailFromRequest(generic.DetailView):
+class CartDetailMixin(object):
     def get_object(self):
         return self.request.cart
+class CartDetailFromRequest(CartDetailMixin, generic.DetailView):
+    pass
+
+class CartDelete(CartDetailMixin, generic.DeleteView):
+    def get_success_url(self):
+        messages.warning(self.request, '已清空購物車')
+        return reverse('cart_detail')
+
+    def get(self, request, *args, **kwargs):
+        return redirect('cart_detail')
 
 class OrderDetailMixin(object):
     def get_object(self):
@@ -99,6 +109,7 @@ class ProductCreate(PermissionRequiredMixin, generic.CreateView):
 
     def get_success_url(self):
         messages.success(self.request, '產品已新增')
+        print (self.request.POST)
         return reverse('dashboard_product_list')
 
 class ProductUpdate(PermissionRequiredMixin, generic.UpdateView):

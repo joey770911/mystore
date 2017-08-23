@@ -19,8 +19,8 @@ class Cart(models.Model):
     items = models.ManyToManyField(Product, through='Cart_Items')
     def total_price(self):
         sum = 0
-        for product in self.items.all():
-            sum += product.price
+        for cart_item in self.cart_items_set.all():
+            sum += cart_item.product.price * cart_item.quantity
         return sum
 
 class Cart_Items(models.Model):

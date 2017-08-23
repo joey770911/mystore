@@ -44,6 +44,7 @@ class Order(models.Model):
 
 #狀態機
     state = FSMField(default='order_placed')
+    created = models.DateTimeField(auto_now_add=True)
 
     @transition(field=state, source='order_placed', target='paid')
     def make_payment(self):

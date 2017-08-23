@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 import dj_database_url
+
+from django.urls import reverse_lazy
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -32,6 +35,7 @@ ALLOWED_HOSTS = ['localhost', 'mystore0804.herokuapp.com']
 
 INSTALLED_APPS = [
     'estore',
+    'spgateway',
     'bootstrap3',
     'fontawesome',
     'django.contrib.admin',
@@ -129,6 +133,19 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#金流
+SPGATEWAY_PROFILE = {
+    'MS12236637': {
+        'MerchantID': 'MS12236637',
+        'HashKey': 'hNu2yp1b3WgbC6OI6sJHkWuIgg2002bh',
+        'HashIV': 'QGjp6lA9hQkUW8C2',
+        'ReturnURL': reverse_lazy('spgateway_NotifyView'),
+        'NotifyURL': '',
+    }
+}
+SPGATEWAY_MERCHANTID = 'MS12236637'
+SPGATEWAY_ORDERMODEL = 'estore.Order'
 
 #設定圖片位置的全域變數
 MEDIA_URL = '/media/'

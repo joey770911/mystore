@@ -20,6 +20,7 @@ urlpatterns = [
 
     url(r'^dashboard/orders/$', views.DashboardOrderList.as_view(), name='dashboard_order_list'),
     url(r'^dashboard/orders/(?P<token>[0-9a-f-]+)/$', views.DashboardOrderDetail.as_view(), name='dashboard_order_detail'),
+    url(r'^dashboard/orders/(?P<token>[0-9a-f-]+)/(?P<action>[a-z_]+)$', views.Dashbo
 
     url(r'^dashboard/users/$', views.UserList.as_view(), name='dashboard_user_list'),
     url(r'^dashboard/users/(?P<pk>\d+)/addtostaff$', views.UserAddToStaff.as_view(), name='dashboard_user_addtostaff'),

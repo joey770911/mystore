@@ -108,6 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hant'
 
 TIME_ZONE = 'UTC'
 
@@ -132,6 +133,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #設定圖片位置的全域變數
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#mail setting
+INSTALLED_APPS += ('naomi',)
+EMAIL_BACKEND = 'naomi.mail.backends.naomi.NaomiBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'mail')
 
 #heroku
 db_from_env = dj_database_url.config(conn_max_age=500)

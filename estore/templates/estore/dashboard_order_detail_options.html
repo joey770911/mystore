@@ -2,12 +2,12 @@
 
 <div style="padding:10px; float:right;">
     {% if object.state == 'order_placed'%}
-    <form action="{% url 'dashboard_order_action' token=object.token action='cancel_order'%}" method="POST">
+    <form action="{% url 'dashboard_order_action' token=object.token action='cancell_order'%}" method="POST">
     {% csrf_token %}
     {% bootstrap_button '取消訂單' button_type='submit' button_class='btn-default btn-sm' %}
     </form>
     {% elif object.state == 'paid' %}
-    <form action="{% url 'dashboard_order_action' token=object.token action='cancel_order'%}" method="POST">
+    <form action="{% url 'dashboard_order_action' token=object.token action='cancell_order'%}" method="POST">
     {% csrf_token %}
     {% bootstrap_button '取消訂單' button_type='submit' button_class='btn-default btn-sm' %}
     </form>
